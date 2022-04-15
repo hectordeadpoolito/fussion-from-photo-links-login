@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { cage } from "../credenciales";
 import { toast } from "react-toastify";
+import { Carousel } from "react-bootstrap";
 
 
 const LinkForm = (props) => {
@@ -86,9 +87,12 @@ archivo=[];
         }
     }, [props.currentId]);
     return (
-        <form className="card card-body" onSubmit={handleSubmit}>
+
+        <form className="card card-body" onSubmit={handleSubmit}><input type="file" onChange={archivoHandler1} />
             <div className="form-group input-group">
+                
                 <div className="input-group-text bg-light">
+                
                 <i className="material-icons">insert_link</i>
                 </div>
                 <input 
@@ -124,13 +128,14 @@ archivo=[];
                 ></textarea> 
             </div>
            <img src={values.archivo} ></img>
-      <input type="file" onChange={archivoHandler1} />
+      
 
        
             <button className="btn btn-primary btn-block">
                 {props.currentId === '' ? 'Save' : 'Update'}
             </button>
         </form>
+
     )
 };
 

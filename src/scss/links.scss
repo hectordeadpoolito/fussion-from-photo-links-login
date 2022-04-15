@@ -1,4 +1,70 @@
 .the-image{
 
     padding-left: 70%;
+    
 }
+
+.cage{
+    display: flex;
+
+}
+
+
+    img{
+        width: 50%;
+        height: 50%;
+
+        display: flex;
+
+        
+    }
+
+
+   .card mb-1{
+       display: flex;
+       flex-direction: row;
+   }
+
+   .col-p-1{
+       justify-items: center;
+       background: rgb(2,0,36);
+       background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+       width: 1300px;
+       height: 300px;
+       display: flex;
+   }
+h1{
+    margin-left: 200px;
+}
+.material-icons2{
+    margin-left: 1000px;
+    z-index: 1;
+    
+
+
+}
+p{
+    margin-left: 200px;
+}
+.link{
+    margin-left:200px;
+}
+
+.the-image{
+    margin-left: 100px;
+    bottom: 150px;
+    display: flex;
+    position: relative;
+    z-index: 2;
+    img{
+     
+    display: flex;
+    width: 200px;
+    height: 200px;
+}
+   
+}
+   .col-p-2{
+    
+   }
+

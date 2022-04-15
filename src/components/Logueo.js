@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Stack, Container, Form, Button } from "react-bootstrap";
-
 import {cage} from "../credenciales";
 
 import {
@@ -60,7 +59,7 @@ const Logueo = () => {
           style={{ width: "300px" }}
           onClick={() => signInWithRedirect(auth, googleProvider)}
         >
-          Acceder con Google
+          Acceder con Google 
         </Button>
 
         <Button

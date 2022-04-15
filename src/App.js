@@ -10,6 +10,7 @@ import { ToastContainer } from "react-toastify";
 
 import { cage } from "./credenciales";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { Carousel, CarouselItem } from "react-bootstrap";
 const auth = getAuth(cage);
 
 function App() {
@@ -30,7 +31,12 @@ function App() {
   return (
     <>
       {usuarioGlobal ? (
+      
+
         <Links correoUsuario={usuarioGlobal.email} />
+    
+
+
 
       ) : 
       
