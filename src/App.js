@@ -3,14 +3,14 @@ import React, { useState,  } from "react";
 import Logueo from "./components/Logueo";
 
 import 'react-toastify/dist//ReactToastify.css';
-
-import Links from './components/Links';
+import Links from "./components/Links";
 import { ToastContainer } from "react-toastify";
 
 
 import { cage } from "./credenciales";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { Carousel, CarouselItem } from "react-bootstrap";
+
 const auth = getAuth(cage);
 
 function App() {

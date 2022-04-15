@@ -11,6 +11,8 @@ const LinkForm = (props) => {
     const initialStateValues = {
         url:"",
         name:"",
+        price:"",
+        face:"",
         description:"",
         archivo:''
     };
@@ -115,6 +117,32 @@ archivo=[];
             placeholder="website name" 
             onChange={handleInputChange}
             value={values.name}
+            />
+            </div>
+            <div className="form-group input input-group"> 
+            <div className="input-group-text bg-light">
+            <i className="material-icons">face</i>
+            </div>
+            <input 
+            type="text" 
+            className="form-control" 
+            name="face" 
+            placeholder="person" 
+            onChange={handleInputChange}
+            value={values.face}
+            />
+            </div>
+            <div className="form-group  input-group"> 
+            <div className="input-group-tex bg-light">
+            <i className="material-icons">money</i>
+            </div>
+            <input 
+            type="text" 
+            className="form-control" 
+            name="price" 
+            placeholder="price" 
+            onChange={handleInputChange}
+            value={values.price}
             />
             </div>
 
