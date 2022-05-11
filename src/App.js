@@ -7,11 +7,11 @@ import Links from "./components/Links";
 import { ToastContainer } from "react-toastify";
 
 
-import { cage } from "./credenciales";
+import { db } from "./credenciales";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { Carousel, CarouselItem } from "react-bootstrap";
 
-const auth = getAuth(cage);
+const auth = getAuth(db);
 
 function App() {
   const [usuarioGlobal, setUsuarioGlobal] = useState(null);

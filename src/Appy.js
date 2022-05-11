@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { cage } from './credenciales';
+import { db } from './credenciales';
 
 function Appy() {
 
@@ -10,7 +10,7 @@ function Appy() {
   const archivoHandler1 = async (e)=> {
 
     const archivo = e.target.files[0];
-    const storageRef = cage.storage().ref();
+    const storageRef = db.storage().ref();
     const archivoPath = storageRef.child(archivo.name);
     await archivoPath.put(archivo);
     console.log("archivo cargado:",archivo.name);
@@ -26,7 +26,7 @@ if (!nombreArchivo) {
   alert("coloca un nombre")
   return
 }
-const coleccionRef =  cage.firestore().collection("links");
+const coleccionRef =  db.firestore().collection("links");
 const docu = await coleccionRef.doc(nombreArchivo).set({nombre: nombreArchivo, url: archivoUrl});
 console.log("archivo cargado:", nombreArchivo, "ulr:", archivoUrl);
 window.location="/"
@@ -34,7 +34,7 @@ window.location="/"
   }
 
   React.useEffect(async ()=>{
-    const docusList = await cage.firestore().collection("links").get();
+    const docusList = await db.firestore().collection("links").get();
     setDocus(docusList.docs.map((doc)=> doc.data()));
    
   }, [])

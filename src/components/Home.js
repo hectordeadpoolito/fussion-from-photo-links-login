@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { cage } from "../credenciales";
+import { db } from "../credenciales";
 import { getAuth, signOut } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 import { Container, Button } from "react-bootstrap";
 
 import 'react-toastify/dist/ReactToastify.css';
 
-const auth = getAuth(cage);
-const firestore = getFirestore(cage);
+const auth = getAuth(db);
+const firestore = getFirestore(db);
 
 const Home = ({ correoUsuario }) => {
   const [arrayTareas, setArrayTareas] = useState(null);

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Stack, Container, Form, Button } from "react-bootstrap";
-import {cage} from "../credenciales";
+import {db} from "../credenciales";
 
 import {
   getAuth,
@@ -9,7 +9,7 @@ import {
   signInWithRedirect,
   GoogleAuthProvider,
 } from "firebase/auth";
-const auth = getAuth(cage);
+const auth = getAuth(db);
 const googleProvider = new GoogleAuthProvider();
 
 const Logueo = () => {

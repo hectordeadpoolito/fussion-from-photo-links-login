@@ -4,9 +4,9 @@ import { toast } from "react-toastify";
 import { getAuth, signOut } from "firebase/auth";
 import '../scss/links.scss';
 import '../scss/links2.scss';
-import {cage} from '../credenciales';
+import {db} from '../credenciales';
 import { Button, Carousel, CarouselItem, Container } from "react-bootstrap";
-const auth = getAuth(cage);
+const auth = getAuth(db);
 const Links = (correoUsuario) => {
   const [archivoUrl, setArchivoUrl] = React.useState("");
   const [docus,setDocus] = React.useState([]);
@@ -28,7 +28,7 @@ const Links = (correoUsuario) => {
 //   }
  
   React.useEffect(async ()=>{
-    const docusList = await cage.firestore().collection("links").get();
+    const docusList = await db.firestore().collection("links").get();
     setDocus(docusList.docs.map((doc)=> doc.data()));
    
   }, [])
@@ -38,12 +38,12 @@ const Links = (correoUsuario) => {
   const addOrEditLink = async (linkObject) => {
      try {
       if (currentId === '') {
-        await cage.firestore().collection('links').doc().set({name:linkObject.name, description:linkObject.description, url:linkObject.url, price:linkObject.price, face:linkObject.face, archivo: archivoUrl });
+        await db.firestore().collection('links').doc().set({name:linkObject.name, description:linkObject.description, url:linkObject.url, price:linkObject.price, face:linkObject.face, archivo: archivoUrl });
         toast("New Lik Added", {
           type: "success",
         });
       } else {
-      await cage.firestore().collection('links').doc(currentId).update({name:linkObject.name, description:linkObject.description, url:linkObject.url, price:linkObject.price, face:linkObject.face, archivo: archivoUrl});
+      await db.firestore().collection('links').doc(currentId).update({name:linkObject.name, description:linkObject.description, url:linkObject.url, price:linkObject.price, face:linkObject.face, archivo: archivoUrl});
         toast('Lik Updated Successfullly', {
           type:'info',
         });
@@ -56,7 +56,7 @@ const Links = (correoUsuario) => {
 
   const onDeleteLink = async (id) => {
     if(window.confirm('are you sure you want to delete this link?')) {
-        await cage.firestore().collection('links').doc(id).delete();
+        await db.firestore().collection('links').doc(id).delete();
         toast('Link Removed Successfully',{
           type:'error',
           autoClose:2000,
@@ -64,7 +64,7 @@ const Links = (correoUsuario) => {
       }
   };
   const getLinks = async () => {
-   cage.firestore().collection('links').onSnapshot((querySnapshot) => {
+   db.firestore().collection('links').onSnapshot((querySnapshot) => {
      const docs = [];
       querySnapshot.forEach((doc) => {
         docs.push({...doc.data(), id:doc.id});

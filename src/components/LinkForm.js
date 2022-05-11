@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { cage } from "../credenciales";
+import { db } from "../credenciales";
 import { toast } from "react-toastify";
 import { Carousel } from "react-bootstrap";
 
@@ -22,7 +22,7 @@ const LinkForm = (props) => {
     const archivoHandler1 = async (e)=> {
   
       const archivo = e.target.files[0];
-      const storageRef = cage.storage().ref();
+      const storageRef = db.storage().ref();
       const archivoPath = storageRef.child(archivo.name);
       await archivoPath.put(archivo);
       console.log("archivo cargado:",archivo.name);
@@ -39,14 +39,14 @@ archivo=[];
     alert("coloca un nombre")
     return
   }
-  const coleccionRef =  cage.firestore().collection("links");
+  const coleccionRef =  db.firestore().collection("links");
   const docu = await coleccionRef.doc(nombreArchivo).set({nombre: nombreArchivo, url: archivoUrl});
   console.log("archivo cargado:", nombreArchivo, "ulr:", archivoUrl);
   window.location="/"
     }
   
     React.useEffect(async ()=>{
-      const docusList = await cage.firestore().collection("links").get();
+      const docusList = await db.firestore().collection("links").get();
       setDocus(docusList.docs.map((doc)=> doc.data()));
     }, [])
 
@@ -75,7 +75,7 @@ archivo=[];
         setValues({...initialStateValues})
     };
     const getLinkById = async (id)  => {
-        const doc = cage.firestore().collection('links').doc(id).get();
+        const doc = db.firestore().collection('links').doc(id).get();
         setValues({...(await doc).data()})
         
         
